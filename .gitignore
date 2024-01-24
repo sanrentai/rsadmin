@@ -1,0 +1,7 @@
+/target
+/.idea
+/.vscode
+/prisma/*.db
+/service/src/generate_prisma
+bruh.json
+/logs

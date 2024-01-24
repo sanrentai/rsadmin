@@ -1,0 +1,53 @@
+name: CI
+
+on:
+  pull_request:
+  push:
+    branches:
+      - main
+    paths-ignore:
+      - "**/.md"
+      - ".config/config"
+  workflow_dispatch:
+
+env:
+  CARGO_TERM_COLOR: always
+  CARGO_INCREMENTAL: 0
+  CARGO_NET_RETRY: 10
+  CI: 1
+  RUST_BACKTRACE: short
+  RUSTUP_MAX_RETRIES: 10
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        OS: [ubuntu-latest, windows-latest, macos-latest]
+    runs-on: ${{ matrix.OS }}
+    env:
+      OS: ${{ matrix.OS }}
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v2
+
+      - name: Install latest stable
+        uses: dtolnay/rust-toolchain@stable
+        with:
+          toolchain: stable
+          components: rustfmt, clippy
+
+      - name: Cache Dependencies
+        uses: Swatinem/rust-cache@v2
+
+      - name: run prisma generate
+        run: cargo prisma generate
+
+      - name: Run Check
+        run: cargo clippy --verbose
+
+      - name: Run fmt
+        run: cargo fmt --all --check
+
+      - name: Run tests
+        run: cargo test --verbose
