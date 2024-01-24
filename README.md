@@ -1,7 +1,7 @@
 # axum-admin
 
-[English](https://github.com/orchid-admin/axum-admin/blob/main/README.md)&nbsp;&nbsp;
-[中文简体](https://github.com/orchid-admin/axum-admin/blob/main/README.zh-hans.md)&nbsp;&nbsp;
+[English](https://github.com/sanrentai/rsadmin/blob/main/README.md)&nbsp;&nbsp;
+[中文简体](https://github.com/sanrentai/rsadmin/blob/main/README.zh-hans.md)&nbsp;&nbsp;
 
 `axum-admin` is a backend management system server implementation developed based on [axum](https://github.com/tokio-rs/axum) + [prisma-client-rust](https://github.com/Brendonovich/prisma-client-rust).
 

@@ -1,7 +1,7 @@
 # axum-admin
 
-[English](https://github.com/orchid-admin/axum-admin/blob/main/README.md)&nbsp;&nbsp;
-[中文简体](https://github.com/orchid-admin/axum-admin/blob/main/README.zh-hans.md)&nbsp;&nbsp;
+[English](https://github.com/sanrentai/rsadmin/blob/main/README.md)&nbsp;&nbsp;
+[中文简体](https://github.com/sanrentai/rsadmin/blob/main/README.zh-hans.md)&nbsp;&nbsp;
 
 `axum-admin` 是基于[axum](https://github.com/tokio-rs/axum) + [prisma-client-rust](https://github.com/Brendonovich/prisma-client-rust). 开发的后台管理系统服务端实现。
 
