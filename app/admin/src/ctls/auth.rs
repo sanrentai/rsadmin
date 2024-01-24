@@ -37,8 +37,9 @@ async fn login_by_account(
         .first(captcha_cache_type.clone(), &params.key, None)
         .await?
         .ok_or(ErrorCode::Captche)?;
+    
+    let captcha_code: String = serde_json::from_str(cache_info.value()).unwrap();
 
-    let captcha_code = cache_info.value();
     if captcha_code.to_lowercase().ne(&params.code.to_lowercase()) {
         return Err(ErrorCode::Captche);
     }
@@ -184,7 +185,7 @@ async fn get_captcha(State(state): State<AppState>) -> Result<impl IntoResponse>
             service::cache_service::CacheType::SystemAuthLoginCaptcha,
             &key,
             captcha.text.to_owned(),
-            Some(10 * 60),
+            Some(600i64),
             None,
         )
         .await?;
